@@ -1,0 +1,25 @@
+<%- include('../layouts/admin_header') -%>
+
+<h3 class="page-title">Majors</h3>
+<a href="/admin/majors/add" class="btn btn-primary">Add major</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% majors.forEach(major => { %>
+            <tr>
+                <td><%= major.title %></td>
+                <td><a href="/admin/majors/edit/<%= major._id %>">Edit</a></td>
+                <td><a href="/admin/majors/delete/<%= major._id %>">Delete</a></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- include('../layouts/admin_header') -%>

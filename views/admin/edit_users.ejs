@@ -1,0 +1,78 @@
+<%- include('../layouts/admin_header') -%>
+
+<h3 class="page-title">Edit User</h3>
+<hr>
+<form action="/admin/users/edit/<%= id %>" method="POST" class="form-horizontal">
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Name</label>
+        <div class="col-xs-10">
+            <input type="text" name="name" placeholder="Full name" value="<%= user.name %>" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Email</label>
+        <div class="col-xs-10">
+            <input type="text" name="email" placeholder="Email" value="<%= user.email %>" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Sex</label>
+        <div class="col-xs-10">
+            <h4><%= user.sex %></h4>
+            <select name="sex" class="form-control">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Subject</label>
+        <div class="col-xs-10">
+            <select name="sub" class="form-control">
+                <option value=""></option>
+                <% subs.forEach(sub => { %>
+                    <option value="<%= sub.slug %>"
+                        <% if(sub.slug == subject) { %>
+                            selected = "selected"
+                        <% } %>
+                    ><%= sub.title %></option>
+                <% }); %>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Username</label>
+        <div class="col-xs-10">
+            <input type="text" name="username" placeholder="Username" value="<%= user.username %>" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Password</label>
+        <div class="col-xs-10">
+            <input type="text" name="password" placeholder="Password" value="<%= user.password %>" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Status</label>
+        <div class="col-xs-10">
+            <select name="status" class="form-control">
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-xs-10">
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+</form>
+
+<%- include('../layouts/admin_footer') -%>

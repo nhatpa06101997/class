@@ -1,0 +1,47 @@
+<%- include('../layouts/admin_header') -%>
+
+<h3 class="page-title">Students</h3>
+<a href="/admin/students/add" class="btn btn-primary">Add student</a>
+
+<% if(stus.length > 0) { %>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Full name</th>
+                <th>Sex</th>
+                <th>Major</th>
+                <th>Subject</th>
+                <th>Class</th>
+                <th>Image</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% stus.forEach(stu => { %>
+                <tr>
+                    <% if(stu.name != "admin") { %>
+                        <td><%= stu.name %></td>
+                        <td><%= stu.sex %></td>
+                        <td><%= stu.major %></td>
+                        <td><%= stu.sub %></td>
+                        <td><%= stu.class %></td>
+                        <td>
+                            <% if(stu.image == "") { %>
+                                <img height="100" width="100" src="/images/mazzola.jpg" alt="">
+                            <% } else { %>
+                                <img height="100" width="100" src="/product_images/<%= stu._id %>/<%= stu.image %>" alt="">
+                            <% } %>
+                        </td>
+                        <td><a href="/admin/students/edit/<%= stu._id %>">Edit</a></td>
+                        <td><a href="/admin/students/delete/<%= stu._id %>">Delete</a></td>
+                    <% } %>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } else { %>
+    <h2 class="text-center">Student empty!!</h2>
+<% } %>
+
+<%- include('../layouts/admin_header') -%>

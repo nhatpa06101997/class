@@ -1,0 +1,25 @@
+<%- include('../layouts/admin_header') -%>
+
+<h3 class="page-title">Add student</h3>
+<a href="/admin/students" class="btn btn-primary">Back to all students</a>
+
+<form action="/admin/students/add" method="POST" class="form-horizontal">
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Name</label>
+        <div class="col-xs-10">
+            <select name="name" class="form-control">
+                <% users.forEach(user => { %>
+                    <option value="<%= user.name %>"><%= user.name %></option>
+                <% }); %>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-xs-10">
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+</form>
+
+<%- include('../layouts/admin_footer') -%>

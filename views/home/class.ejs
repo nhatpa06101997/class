@@ -1,0 +1,25 @@
+<%- include('../layouts/header') -%>
+
+
+
+<div class="row">
+    <% majors.forEach(major => { %>
+        <div class="col-xs-12 col-md-4">
+            <button class="accordion" ><%= major.title %></button>
+            <div class="panel">
+                <% subs.forEach(sub => { %>
+                    <% if(major.slug == sub.major) { %>
+                        <p><a href="/<%= sub.slug %>"><%= sub.title %></a></p>
+                    <% } else {  %>
+                        <p></p>
+                    <% } %>
+                <% }); %>
+            </div>
+        </div>
+    <% }); %>
+</div>
+
+
+
+
+<%- include('../layouts/footer') -%>

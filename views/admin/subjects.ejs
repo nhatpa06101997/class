@@ -1,0 +1,29 @@
+<%- include('../layouts/admin_header') -%>
+
+<h3 class="page-title">Subjects</h3>
+<a href="/admin/subjects/add" class="btn btn-primary">Add subject</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Major</th>
+            <th>Content</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% subs.forEach(sub => { %>
+            <tr>
+                <td><%= sub.title %></td>
+                <td><%= sub.major %></td>
+                <td><%= sub.content %></td>
+                <td><a href="/admin/subjects/edit/<%= sub._id %>">Edit</a></td>
+                <td><a href="/admin/subjects/delete/<%= sub._id %>">Delete</a></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- include('../layouts/admin_header') -%>

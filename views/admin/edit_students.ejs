@@ -1,0 +1,99 @@
+<%- include('../layouts/admin_header') -%>
+
+<h3 class="page-title">Edit Students</h3>
+<a href="/admin/students" class="btn btn-primary">Back to all students</a>
+
+<form action="/admin/students/edit/<%= id %>" enctype="multipart/form-data" method="POST" class="form-horizontal">
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Name</label>
+        <div class="col-xs-10">
+            <input type="text" name="name" placeholder="Full name" value="<%= stu.name %>" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Sex</label>
+        <div class="col-xs-10">
+            <select name="sex" class="form-control">
+                <% if(stu.sex == "Male") { %>
+                    <option value="<%= stu.sex %>" selected><%= stu.sex %></option>
+                    <option value="Female">Female</option>
+                <% } else { %>
+                    <option value="<%= stu.sex %>" selected><%= stu.sex %></option>
+                    <option value="Male">Male</option>
+                <% } %>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Major</label>
+        <div class="col-xs-10">
+            <input type="text" name="major" value="<%= stu.major %>" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Subjects</label>
+        <div class="col-xs-10">
+            <select name="sub" class="form-control">
+                <% subs.forEach(subj => { %>
+                    <option value="<%= subj.slug %>"
+                        <% if(subj.slug == sub ) { %>
+                            selected = "selected"
+                        <% } %>
+                    ><%= subj.title %></option>
+                <% }); %>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Class</label>
+        <div class="col-xs-10">
+            <select name="class" class="form-control">
+                <% cl.forEach(cls => { %>
+                    <option value="<%= cls.slug %>" 
+                        <% if(cls.slug == clss) { %>
+                            selected = "selected"
+                        <% } %>
+                    ><%= cls.title %></option>
+                <% }); %>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="" class="control-label col-xs-2">Image</label>
+        <div class="col-xs-10">
+            <input type="file" name="image" id="img" class="form-control">
+            <img src="#" id="imgPreview" alt="">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-xs-10">
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function readUrl(input){
+        if(input.files && input.files[0]){
+            var reader = new FileReader();
+
+            reader.onload = function(e){
+                $('#imgPreview').attr('src',e.target.result).width(100).height(100);
+            }
+
+            reader.readAsDataURL(input.files[0])
+        }
+    }
+
+    $('#img').change(function(){
+        readUrl(this);
+    });
+</script>
+
+<%- include('../layouts/admin_footer') -%>

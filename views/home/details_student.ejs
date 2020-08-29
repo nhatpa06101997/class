@@ -1,0 +1,33 @@
+<%- include('../layouts/header') -%>
+
+<h3 class="page-title"><%= stus.name %></h3>
+<hr>
+<table class="table table-striped">
+    <tr>
+        <td>
+            <% if(stus.image == "") { %>
+                <img width="100" height="100" src="/images/mazzola.jpg" alt="">
+            <% } else { %>
+                <img width="100" height="100" src="/product_images/<%= stus._id %>/<%= stus.image %>" alt="">
+            <% } %>
+        </td>
+    </tr>
+    
+    <tr>
+        <td>Sex: <%= stus.sex %></td>
+    </tr>
+    <tr>
+        <td>Major: <%= stus.major %></td>
+    </tr>
+    <tr>
+        <td>Subject: <%= stus.sub %></td>
+    </tr>
+    <tr>
+        <td>Class: <%= stus.class %></td>
+    </tr>
+    <tr>
+        <td>Status: <%= stus.status %></td>
+    </tr>
+</table>
+
+<%- include('../layouts/footer') -%>

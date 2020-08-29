@@ -1,0 +1,27 @@
+<%- include('../layouts/admin_header') -%>
+
+<h3 class="page-title">Class</h3>
+<a href="/admin/class/add" class="btn btn-primary">Add class</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Subject</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% cl.forEach(cls => { %>
+            <tr>
+                <td><%= cls.title %></td>
+                <td><%= cls.sub %></td>
+                <td><a href="/admin/class/edit/<%= cls._id %>">Edit</a></td>
+                <td><a href="/admin/class/delete/<%= cls._id %>">Delete</a></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<%- include('../layouts/admin_header') -%>

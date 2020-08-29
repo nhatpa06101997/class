@@ -1,0 +1,22 @@
+<%- include('../layouts/header') -%>
+
+<%= content %>
+<hr>
+<div class="row">
+    <% cl.forEach(cls => { %>
+        <div class="col-xs-12 col-md-4">
+            <button class="accordion" ><%= cls.title %></button>
+            <div class="panel">
+                <% stus.forEach(stu => { %>
+                    <% if(cls.slug == stu.class) { %>
+                        <p><a href="/<%= cls.slug %>/<%= stu._id %>"><%= stu.name %></a></p>
+                    <% } else {  %>
+                        <p></p>
+                    <% } %>
+                <% }); %>
+            </div>
+        </div>
+    <% }); %>
+</div>
+
+<%- include('../layouts/footer') -%>
